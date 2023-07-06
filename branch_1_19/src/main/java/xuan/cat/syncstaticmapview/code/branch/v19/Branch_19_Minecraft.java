@@ -110,7 +110,7 @@ public final class Branch_19_Minecraft implements BranchMinecraft {
         ServerGamePacketListenerImpl connection = entityPlayer.connection;
         Channel channel = connection.connection.channel;
         ChannelPipeline pipeline = channel.pipeline();
-        pipeline.addAfter("packet_handler", "sync_static_map_view_write", new ChannelDuplexHandler() {
+        pipeline.addBefore("unbundler", "sync_static_map_view_write", new ChannelDuplexHandler() {
             @Override
             public void write(ChannelHandlerContext ctx, Object msg, ChannelPromise promise) throws Exception {
                 if (msg instanceof Packet) {

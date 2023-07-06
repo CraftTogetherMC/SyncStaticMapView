@@ -29,13 +29,6 @@ public final class Branch_19_ProxyPlayerConnection {
     static private int getRelevantID(Packet<?> packet) throws IllegalAccessException {
         if (packet instanceof PacketPlayOutEntityMetadata)
             return field_PacketPlayOutEntityMetadata_entityId.getInt(packet);
-        if (packet instanceof ClientboundBundlePacket) {
-            for (Packet sub : ((ClientboundBundlePacket) packet).subPackets()) {
-                if (sub instanceof PacketPlayOutEntityMetadata) {
-                    return field_PacketPlayOutEntityMetadata_entityId.getInt(sub);
-                }
-            }
-        }
         return -1;
     }
 
